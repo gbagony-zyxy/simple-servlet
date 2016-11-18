@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+
+	<display-name>simple-servlet</display-name>
+
+	<!-- Configuring ServletContext Parameters: 
+		The value of every specified parameter can be loaded in the servlet code, 
+		reference by the parameter name. -->
+	<context-param>
+		<param-name>adminEmailAddress</param-name>
+		<param-value>gbagony@126.com</param-value>
+	</context-param>
+
+	<!-- Configuring the Session: 
+		This setting is effected all HttpSession in the current web application. -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- Configuring Error Handlers: 
+		You can customize error pages in web.xml file using below tags. -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/not-found.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/unexpected-error.html</location>
+	</error-page>
+	
+	<!-- Configuring Icon -->
+	<icon>
+		<small-icon>/res/nano.ico</small-icon>
+	</icon>
+	<!-- Configuring Mime Types -->
+	<mime-mapping>
+		<extension>portable</extension>
+		<mime-type>application/pdf</mime-type>
+	</mime-mapping>
+	
+	<!-- Configuring Web Application Security:
+		Adding a Security Constraint
+	 -->
+	<security-constraint>
+		<!-- Identify s subset if the resources and HTTP methods on those resources
+			within a web application on which a security constraint applies.
+	 	-->
+		<web-resource-collection>
+			<web-resource-name>Ruyin Application</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<!-- Defines the user roles that should be permitted access to this resource collection.-->
+		<auth-constraint>
+			<role-name>ruyin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	
+	<!-- Adding a welcome File List -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
